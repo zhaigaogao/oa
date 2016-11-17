@@ -1,0 +1,77 @@
+* {
+    font-family: "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑",
+        STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+
+.button {
+    border-radius: 8px;
+    padding: 8px 36px;
+    margin: 10px;
+    cursor: pointer;
+}
+.button.button-grey {
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+}
+.button.button-grey:hover {
+    background: #e9e9e9;
+}
+.button.button-blue {
+    border: 1px solid #ccc;
+    background: #4d78da;
+    color: #fff;
+}
+.button.button-blue:hover {
+    background: #3c5ba2;
+}
+
+#scan_form {
+    padding: 30px;
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+#scan_form > .scan_input{
+    width: 60%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 4px #ccc, -1px -1px 4px #ccc;
+}
+.scan_note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+#emp_info {
+    display: none;
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+.emp_info_table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.emp_info_table > caption {
+    color: #666;
+    padding: 10px;
+}
+.emp_info_table th {
+    background: #d9e6fc;
+    width: 10em;
+}
+.emp_info_table th,
+.emp_info_table td {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.emp_info_table td.warning {
+    text-align: center;
+    font-size: 25px;
+    color: #ec6b0f;
+}

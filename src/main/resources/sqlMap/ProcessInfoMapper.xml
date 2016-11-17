@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cmcc.oa.dao.ProcessInfoMapper" >
+  <resultMap id="BaseResultMap" type="cmcc.oa.entity.ProcessInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="process_instance_id" property="processInstanceId" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reserve_time" property="reserveTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="link_table_name" property="linkTableName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+    <result column="create_user_name" property="createUserName" jdbcType="VARCHAR" />
+    <result column="create_user_all_org_name" property="createUserAllOrgName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type_id, process_instance_id, create_user_id, create_time, reserve_time, type, 
+    link_table_name, company_id, field1, field2, field3, create_user_name, create_user_all_org_name
+  </sql>
+  
+  <sql id="Select_Base_Column_List" >
+    id, type_id, process_instance_id, create_user_id, create_time, reserve_time, type, 
+    link_table_name, company_id, create_user_name, create_user_all_org_name
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Select_Base_Column_List" />
+    from third_oa_process_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <!-- 单条记录条件查询 -->
+  <select id="selectSingle" resultMap="BaseResultMap" parameterType="cmcc.oa.entity.ProcessInfo" >
+    select 
+    <include refid="Select_Base_Column_List" />
+    from third_oa_process_info
+    <where>
+      <if test="id != null" >
+        id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="typeId != null" >
+        and type_id=#{typeId,jdbcType=VARCHAR}
+      </if>
+      <if test="processInstanceId != null" >
+        and process_instance_id=#{processInstanceId,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserId != null" >
+        and create_user_id=#{createUserId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reserveTime != null" >
+        and reserve_time=#{reserveTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="type != null" >
+        and type=#{type,jdbcType=INTEGER}
+      </if>
+      <if test="linkTableName != null" >
+        and link_table_name=#{linkTableName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyId != null" >
+        and company_id=#{companyId,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserName != null" >
+        and create_user_name=#{createUserName,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserAllOrgName != null" >
+        and create_user_all_org_name=#{createUserAllOrgName,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  
+  <!-- 多条记录条件查询 -->
+  <select id="selectList" resultMap="BaseResultMap" parameterType="cmcc.oa.entity.ProcessInfo" >
+    select 
+    <include refid="Select_Base_Column_List" />
+    from third_oa_process_info
+    <where>
+      <if test="id != null" >
+        id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="typeId != null" >
+        and type_id=#{typeId,jdbcType=VARCHAR}
+      </if>
+      <if test="processInstanceId != null" >
+        and process_instance_id=#{processInstanceId,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserId != null" >
+        and create_user_id=#{createUserId,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+        and create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reserveTime != null" >
+        and reserve_time=#{reserveTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="type != null" >
+        and type=#{type,jdbcType=INTEGER}
+      </if>
+      <if test="linkTableName != null" >
+        and link_table_name=#{linkTableName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyId != null" >
+        and company_id=#{companyId,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserName != null" >
+        and create_user_name=#{createUserName,jdbcType=VARCHAR}
+      </if>
+      <if test="createUserAllOrgName != null" >
+        and create_user_all_org_name=#{createUserAllOrgName,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from third_oa_process_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cmcc.oa.entity.ProcessInfo" useGeneratedKeys="true" keyProperty="id">
+    insert into third_oa_process_info (id, type_id, process_instance_id, 
+      create_user_id, create_time, reserve_time, 
+      type, link_table_name, company_id, 
+      field1, field2, field3,create_user_name, create_user_all_org_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{typeId,jdbcType=VARCHAR}, #{processInstanceId,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{reserveTime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=INTEGER}, #{linkTableName,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR},
+      #{createUserName,jdbcType=VARCHAR}, #{createUserAllOrgName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cmcc.oa.entity.ProcessInfo" >
+    insert into third_oa_process_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="processInstanceId != null" >
+        process_instance_id,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="reserveTime != null" >
+        reserve_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="linkTableName != null" >
+        link_table_name,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="field1 != null" >
+        field1,
+      </if>
+      <if test="field2 != null" >
+        field2,
+      </if>
+      <if test="field3 != null" >
+        field3,
+      </if>
+      <if test="createUserName != null" >
+        create_user_name,
+      </if>
+      <if test="createUserAllOrgName != null" >
+        create_user_all_org_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="processInstanceId != null" >
+        #{processInstanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserveTime != null" >
+        #{reserveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="linkTableName != null" >
+        #{linkTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserAllOrgName != null" >
+        #{createUserAllOrgName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cmcc.oa.entity.ProcessInfo" >
+    update third_oa_process_info
+    <set >
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="processInstanceId != null" >
+        process_instance_id = #{processInstanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserveTime != null" >
+        reserve_time = #{reserveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="linkTableName != null" >
+        link_table_name = #{linkTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null" >
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null" >
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null" >
+        field3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserAllOrgName != null" >
+        create_user_all_org_name = #{createUserAllOrgName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cmcc.oa.entity.ProcessInfo" >
+    update third_oa_process_info
+    set type_id = #{typeId,jdbcType=VARCHAR},
+      process_instance_id = #{processInstanceId,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      reserve_time = #{reserveTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      link_table_name = #{linkTableName,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      create_user_all_org_name = #{createUserAllOrgName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
